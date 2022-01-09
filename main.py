@@ -6,6 +6,7 @@ import os
 
 window = tk.Tk()
 window.geometry("420x420")
+window.title("Serial Monitor")
 
 arduino = None
 arduino_loop = True
