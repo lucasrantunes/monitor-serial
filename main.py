@@ -4,11 +4,13 @@ from arduino import Arduino
 from datetime import datetime
 import os
 
+# setting window
 window = tk.Tk()
 window.geometry("420x420")
 window.resizable(False,False)
 window.title("Serial Monitor")
 
+# variables 
 arduino = None
 arduino_loop = True
 file_name = ""
@@ -74,8 +76,8 @@ clear_button = tk.Button(bottom_frame, text="Clear", command=clear_text)
 clear_button.pack(side=tk.RIGHT)
 
 auto_save = tk.IntVar(value=1)
-auto_save_checkbox = tk.Checkbutton(text="Auto Save", variable=auto_save)
-auto_save_checkbox.pack(side=tk.BOTTOM)
+auto_save_checkbox = tk.Checkbutton(bottom_frame,text="Auto Save", variable=auto_save)
+auto_save_checkbox.pack(side=tk.RIGHT)
 
 current_directory = os.getcwd()
 folder_directory = os.path.join(current_directory, r"log") 
