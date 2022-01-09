@@ -10,9 +10,10 @@ window.geometry("420x420")
 window.resizable(False,False)
 window.title("Serial Monitor")
 
-# variables 
+# arduino variables 
 arduino = None
 arduino_loop = True
+
 file_name = ""
 
 def read_loop() -> None:
@@ -30,7 +31,7 @@ def read_loop() -> None:
 def start_record() -> None:
     global arduino_loop, arduino, file_name
     arduino_loop = True
-    arduino = Arduino(baudrate_text.get("1.0", tk.END).rsplit()[0], int(port_text.get("1.0", tk.END).rsplit()[0]))
+    arduino = Arduino(port_text.get("1.0", tk.END).rsplit()[0], int(baudrate_text.get("1.0", tk.END).rsplit()[0]))
     window.after(100, read_loop)
     file_name = datetime.now().strftime("%d%m%Y_%H%M%S")
 
@@ -53,13 +54,13 @@ bottom_frame.pack(side=tk.BOTTOM)
 baudrate_label = tk.Label(top_frame, text="Baudrate: ")
 baudrate_label.pack(side=tk.LEFT)
 baudrate_text = tk.Text(top_frame, height=1, width=15)
-baudrate_text.insert(tk.END, "/dev/ttyUSB0")
+baudrate_text.insert(tk.END, str(115200))
 baudrate_text.pack(side=tk.LEFT)
 
 port_label = tk.Label(top_frame, text="Port: ")
 port_label.pack(side=tk.LEFT)
 port_text = tk.Text(top_frame, height=1, width=15)
-port_text.insert(tk.INSERT, str(115200))
+port_text.insert(tk.INSERT, "/dev/ttyUSB0")
 port_text.pack(side=tk.RIGHT)
 
 log_text = tk.Text(window)
