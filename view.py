@@ -69,3 +69,6 @@ class View:
         self.log_text.configure(state=tk.NORMAL)
         self.log_text.delete("1.0", tk.END)
         self.log_text.configure(state=tk.DISABLED)
+
+    def set_main_loop(self) -> None:
+        self.window.mainloop()
