@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog as fd
-from datetime import datetime
 class View:
-    def __init__(self, start_record, stop_record, plot_last_record) -> None:
+    def __init__(self, start_record, stop_record, plot_last_record, plot_record) -> None:
         # setting window
         self.window = tk.Tk()
         self.window.geometry("420x420")
@@ -50,7 +49,7 @@ class View:
         self.auto_save = tk.IntVar(value=1)
         self.file_menu.add_checkbutton(label="Auto Save", onvalue=1, offvalue=0, variable=self.auto_save)
         self.file_menu.add_command(label="Plot Last Record", command=plot_last_record)
-        self.file_menu.add_command(label="Plot Record")
+        self.file_menu.add_command(label="Plot Record", command=plot_record)
         self.file_menu.add_command(label="Close")
 
         self.file_menu.add_separator()
@@ -80,3 +79,6 @@ class View:
 
     def set_main_loop(self) -> None:
         self.window.mainloop()
+
+    def get_file_name(self) -> str:
+        return fd.askopenfilename()

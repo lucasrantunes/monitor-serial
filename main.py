@@ -36,8 +36,11 @@ def stop_record() -> None:
 def plot_last_record() -> None:
     graph = Graph(f"log/{file_name}.txt")
 
+def plot_record() -> None:
+    graph = Graph(view.get_file_name())
+
 if __name__ == "__main__":
-    view = View(start_record, stop_record, plot_last_record)
+    view = View(start_record, stop_record, plot_last_record, plot_record)
 
     current_directory = os.getcwd()
     folder_directory = os.path.join(current_directory, r"log") 
