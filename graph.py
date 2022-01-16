@@ -13,7 +13,10 @@ class Graph:
     def plot_data(self, data):
         data.head()
         data.plot(x='tempo')
-        plt.xlabel("Tempo (ms)")
+        plt.figure.title("Data")
+        plt.xlabel("Time (ms)")
+        plt.tight_layout()
+        plt.style.use("fivethirtyeight")
         plt.show()
 
 if __name__ == "__main__":
