@@ -25,7 +25,10 @@ class View:
         self.port_text.insert(tk.INSERT, "/dev/ttyUSB0")
         self.port_text.pack(side=tk.RIGHT)
 
-        self.log_text = tk.Text(self.window)
+        scrollbar = tk.Scrollbar(self.window)
+        scrollbar.pack( side = tk.RIGHT, fill = tk.Y )
+
+        self.log_text = tk.Text(self.window, yscrollcommand=scrollbar.set)
         self.log_text.config(state=tk.DISABLED)
         self.log_text.pack()
 
@@ -57,11 +60,13 @@ class View:
         self.file_menu.add_command(label="Exit", command=self.window.quit)
         self.menu_bar.add_cascade(label="File", menu=self.file_menu)
         self.window.config(menu=self.menu_bar)
+        scrollbar.config(command=self.log_text.yview)
 
     def insert_text(self, text) -> None:
         self.log_text.configure(state=tk.NORMAL)
         self.log_text.insert(tk.END,  text + '\n')
         self.log_text.configure(state=tk.DISABLED)
+        self.log_text.see(tk.END)
 
     def get_auto_save(self):
         return self.auto_save.get()

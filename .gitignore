@@ -6,3 +6,5 @@ log
 main.spec
 build
 graph_old.py
+dist
+build
