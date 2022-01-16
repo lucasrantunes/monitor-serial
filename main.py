@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 from arduino import Arduino
 from view import View
+from graph import Graph
 
 # arduino variables 
 arduino = None
@@ -14,7 +15,7 @@ def read_loop() -> None:
         if arduino.get_record() == True:
             text = arduino.read()
             view.insert_text(text)
-            view.window.after(500, read_loop)
+            view.window.after(10, read_loop)
             if view.get_auto_save() == 1:
                 file = open(f"log/{file_name}.txt", 'a', encoding='utf-8')
                 file.write(f"{text}\n")
@@ -32,8 +33,11 @@ def stop_record() -> None:
         arduino.set_record()
         arduino = None
 
+def plot_last_record() -> None:
+    graph = Graph(f"log/{file_name}.txt")
+
 if __name__ == "__main__":
-    view = View(start_record, stop_record)
+    view = View(start_record, stop_record, plot_last_record)
 
     current_directory = os.getcwd()
     folder_directory = os.path.join(current_directory, r"log") 
