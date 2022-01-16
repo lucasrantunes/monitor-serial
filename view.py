@@ -45,12 +45,6 @@ class View:
                                       command=self.clear_text)
         self.clear_button.pack(side=tk.RIGHT)
 
-        """self.auto_save = tk.IntVar(value=1)
-        self.auto_save_checkbox = tk.Checkbutton(self.bottom_frame, 
-                                                 text="Auto Save", 
-                                                 variable=self.auto_save)
-        self.auto_save_checkbox.pack(side=tk.RIGHT)"""
-
         menu_bar = tk.Menu(self.window)
         file_menu = tk.Menu(menu_bar, tearoff=0)
         self.auto_save = tk.IntVar(value=1)
