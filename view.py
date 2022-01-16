@@ -45,19 +45,19 @@ class View:
                                       command=self.clear_text)
         self.clear_button.pack(side=tk.RIGHT)
 
-        menu_bar = tk.Menu(self.window)
-        file_menu = tk.Menu(menu_bar, tearoff=0)
+        self.menu_bar = tk.Menu(self.window)
+        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.auto_save = tk.IntVar(value=1)
-        file_menu.add_checkbutton(label="Auto Save", onvalue=1, offvalue=0, variable=self.auto_save)
-        file_menu.add_command(label="Plot Last Record")
-        file_menu.add_command(label="Plot Record")
-        file_menu.add_command(label="Close")
+        self.file_menu.add_checkbutton(label="Auto Save", onvalue=1, offvalue=0, variable=self.auto_save)
+        self.file_menu.add_command(label="Plot Last Record")
+        self.file_menu.add_command(label="Plot Record")
+        self.file_menu.add_command(label="Close")
 
-        file_menu.add_separator()
+        self.file_menu.add_separator()
 
-        file_menu.add_command(label="Exit", command=self.window.quit)
-        menu_bar.add_cascade(label="File", menu=file_menu)
-        self.window.config(menu=menu_bar)
+        self.file_menu.add_command(label="Exit", command=self.window.quit)
+        self.menu_bar.add_cascade(label="File", menu=self.file_menu)
+        self.window.config(menu=self.menu_bar)
 
     def insert_text(self, text) -> None:
         self.log_text.configure(state=tk.NORMAL)
