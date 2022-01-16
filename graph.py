@@ -11,9 +11,7 @@ class Graph:
         return data
 
     def plot_data(self, data):
-        data.head()
         data.plot(x='tempo')
-        plt.figure.title("Data")
         plt.xlabel("Time (ms)")
         plt.tight_layout()
         plt.style.use("fivethirtyeight")
