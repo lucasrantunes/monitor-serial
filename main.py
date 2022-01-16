@@ -34,7 +34,10 @@ def stop_record() -> None:
         arduino = None
 
 def plot_last_record() -> None:
-    graph = Graph(f"log/{file_name}.txt")
+    if file_name != "":
+        graph = Graph(f"log/{file_name}.txt")
+    else:
+        view.error_message("There is no last record.")
 
 def plot_record() -> None:
     graph = Graph(view.get_file_name())

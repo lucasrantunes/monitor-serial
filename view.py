@@ -82,3 +82,6 @@ class View:
 
     def get_file_name(self) -> str:
         return fd.askopenfilename()
+    
+    def error_message(self, msg) -> None:
+        tk.messagebox.showwarning(title="Error!", message=msg)
