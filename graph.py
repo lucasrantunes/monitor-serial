@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 class Graph:
     def __init__(self, file_name) -> None:
         self.file_name = file_name
-        data = self.read_data(file_name)
+        data = self.read_data()
         self.plot_data(data)
 
-    def read_data(self, file_name) -> pd.DataFrame:
-        data = pd.read_csv(file_name)
+    def read_data(self) -> pd.DataFrame:
+        data = pd.read_csv(self.file_name)
         return data
 
     def plot_data(self, data):
