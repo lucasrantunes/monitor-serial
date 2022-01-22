@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from arduino import Arduino
 from view import View
-from graph import Graph
+import multiprocessing as mp
 
 # arduino variables 
 arduino = None
@@ -38,12 +38,14 @@ def stop_record() -> None:
 
 def plot_last_record() -> None:
     if file_name != "":
-        graph = Graph(f"log/{file_name}.txt")
+        #graph = Graph(f"log/{file_name}.txt")
+        pass
     else:
         view.error_message("There is no last record.")
 
 def plot_record() -> None:
-    graph = Graph(view.get_file_name())
+    #graph = Graph(view.get_file_name())
+    os.system(f"python3 graph.py {view.get_file_name()}")
 
 def set_directory():
     current_directory = os.getcwd()
