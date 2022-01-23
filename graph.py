@@ -14,11 +14,13 @@ def plot_data(data):
         y = data[data.columns[column]].tolist()
         line_label = data.columns[column]
         plt.plot(x, y, label=f"{line_label}")
+        plt.legend(loc="upper left")
         column += 1
 
 def read_data(file_name) -> pd.DataFrame:
     data = pd.read_csv(file_name)
-    return data
+    tail = data.tail(100)
+    return tail
 
 def update_plot(i):
     global file_name
