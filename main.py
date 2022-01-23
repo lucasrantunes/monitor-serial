@@ -3,6 +3,7 @@ from datetime import datetime
 from arduino import Arduino
 from view import View
 import multiprocessing as mp
+import subprocess
 
 # arduino variables 
 arduino = None
@@ -45,7 +46,7 @@ def plot_last_record() -> None:
 
 def plot_record() -> None:
     #graph = Graph(view.get_file_name())
-    os.system(f"python3 graph.py {view.get_file_name()}")
+    subprocess.call(f"python3 graph.py log/{file_name}.txt", shell=True)
 
 def set_directory():
     current_directory = os.getcwd()

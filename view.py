@@ -1,3 +1,4 @@
+import threading
 import tkinter as tk
 from tkinter import filedialog as fd
 class View:
@@ -52,7 +53,7 @@ class View:
         self.auto_save = tk.IntVar(value=1)
         self.file_menu.add_checkbutton(label="Auto Save", onvalue=1, offvalue=0, variable=self.auto_save)
         self.file_menu.add_command(label="Plot Last Record", command=plot_last_record)
-        self.file_menu.add_command(label="Plot Record", command=plot_record)
+        self.file_menu.add_command(label="Plot Record", command=threading.Thread(target=plot_record).start)
         self.file_menu.add_command(label="Close")
 
         self.file_menu.add_separator()
